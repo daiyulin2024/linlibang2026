@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.sqlite3
+.env
+uploads/
+quick_demo/*.sqlite3
+quick_demo/ui_check.png
+.streamlit/secrets.toml
+**/.streamlit/secrets.toml
