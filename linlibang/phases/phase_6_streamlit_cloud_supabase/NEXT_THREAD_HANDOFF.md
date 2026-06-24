@@ -12,6 +12,8 @@
 - 依赖：`requirements.txt`
 - Supabase 初始化脚本：`supabase_schema_v6_cloud.sql`
 - 服务电话簿增量迁移：`supabase_service_providers_phonebook_migration.sql`
+- Render Blueprint 配置：`C:\Users\19164\Documents\python101\render.yaml`
+- Render 说明：`C:\Users\19164\Documents\python101\RENDER_DEPLOY.md`
 
 本地真实密钥文件：
 
@@ -21,7 +23,7 @@ C:\Users\19164\Documents\python101\linlibang\phases\phase_6_streamlit_cloud_supa
 
 该文件保留在本地，已被 `.gitignore` 排除。交接文档和 GitHub 仓库不写入真实密钥。
 
-## 2. GitHub 状态
+## 2. GitHub 与 Render 状态
 
 GitHub 仓库：
 
@@ -35,17 +37,17 @@ https://github.com/daiyulin2024/linlibang2026
 main
 ```
 
-本轮已决定放弃先前的云端部署配置清理。已从当前仓库版本删除：
+当前选择的云端方式是 Render。Render 相关仓库文件已恢复并保留：
 
 - `render.yaml`
 - `RENDER_DEPLOY.md`
-- 根目录 `.streamlit/config.toml`
-- 云端目录 `.streamlit/config.toml`
-- 云端目录 `.streamlit/secrets.toml.example`
-- `README_DEPLOY.md`
-- `.devcontainer/devcontainer.json`
 
-说明：这只清理 GitHub 当前版本里的部署配置文件，不会自动删除 Render 或 Streamlit Cloud 控制台里已经创建的服务。控制台里的服务需要用户手动删除。
+当前 Render 地址：
+
+- 用户端：`https://linlibang2026-user.onrender.com`
+- 后台端：`https://linlibang2026-manage.onrender.com`
+
+Render 免费实例会空闲休眠，首次访问可能等待较久。
 
 ## 3. 后续协作规则
 
@@ -171,25 +173,45 @@ supabase_schema_v6_cloud.sql
 supabase_service_providers_phonebook_migration.sql
 ```
 
-## 6. 后续优先任务建议
+## 6. 环境变量
 
-1. 本地完整跑通用户端和后台端。
-2. 检查 Supabase 表字段是否与代码一致。
-3. 走一遍完整流程：
+当前代码依赖以下环境变量：
+
+```text
+SUPABASE_URL
+SUPABASE_KEY
+ADMIN_PASSWORD
+XFYUN_APP_ID
+XFYUN_API_KEY
+XFYUN_API_SECRET
+```
+
+说明：
+
+- `ADMIN_PASSWORD` 是后台工作人员统一登录密码，不是居民密码。
+- 居民登录方式是手机号 + 六位认证码。
+- 用户端和后台端都使用同一套环境变量。
+
+## 7. 后续优先任务建议
+
+1. 继续本地代码完善，不以部署为当前重点。
+2. 本地完整跑通用户端和后台端。
+3. 检查 Supabase 表字段是否与代码一致。
+4. 走一遍完整流程：
    - 用户端注册居民。
    - 后台审核通过并生成认证码。
    - 用户端登录。
    - 四大卡片提交工单。
    - 自己选服务电话簿展示服务商。
    - 后台工单分流并生成服务记录。
-4. 后续可优化：
+5. 后续可优化：
    - 登录/注册页视觉更精细。
    - 后台服务商支持编辑、停用、删除。
    - 电话簿支持筛选或搜索。
    - 语音识别失败时的降级提示。
    - 图片/音频上传错误提示。
 
-## 7. 新线程开场建议
+## 8. 新线程开场建议
 
 新线程请先阅读本文件：
 

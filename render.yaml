@@ -1,0 +1,48 @@
+services:
+  - type: web
+    name: linlibang2026-user
+    runtime: python
+    plan: free
+    branch: main
+    buildCommand: pip install --upgrade pip && pip install -r linlibang/phases/phase_6_streamlit_cloud_supabase/requirements.txt
+    startCommand: python -m streamlit run linlibang/phases/phase_6_streamlit_cloud_supabase/app.py --server.address=0.0.0.0 --server.port=$PORT --server.headless=true --browser.gatherUsageStats=false
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: XFYUN_APP_ID
+        sync: false
+      - key: XFYUN_API_KEY
+        sync: false
+      - key: XFYUN_API_SECRET
+        sync: false
+
+  - type: web
+    name: linlibang2026-manage
+    runtime: python
+    plan: free
+    branch: main
+    buildCommand: pip install --upgrade pip && pip install -r linlibang/phases/phase_6_streamlit_cloud_supabase/requirements.txt
+    startCommand: python -m streamlit run linlibang/phases/phase_6_streamlit_cloud_supabase/admin_app.py --server.address=0.0.0.0 --server.port=$PORT --server.headless=true --browser.gatherUsageStats=false
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: XFYUN_APP_ID
+        sync: false
+      - key: XFYUN_API_KEY
+        sync: false
+      - key: XFYUN_API_SECRET
+        sync: false
