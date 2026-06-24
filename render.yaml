@@ -2,6 +2,7 @@ services:
   - type: web
     name: linlibang2026-user
     runtime: python
+    plan: free
     branch: main
     buildCommand: pip install --upgrade pip && pip install -r linlibang/phases/phase_6_streamlit_cloud_supabase/requirements.txt
     startCommand: python -m streamlit run linlibang/phases/phase_6_streamlit_cloud_supabase/app.py --server.address=0.0.0.0 --server.port=$PORT --server.headless=true --browser.gatherUsageStats=false
@@ -25,6 +26,7 @@ services:
   - type: web
     name: linlibang2026-manage
     runtime: python
+    plan: free
     branch: main
     buildCommand: pip install --upgrade pip && pip install -r linlibang/phases/phase_6_streamlit_cloud_supabase/requirements.txt
     startCommand: python -m streamlit run linlibang/phases/phase_6_streamlit_cloud_supabase/admin_app.py --server.address=0.0.0.0 --server.port=$PORT --server.headless=true --browser.gatherUsageStats=false
