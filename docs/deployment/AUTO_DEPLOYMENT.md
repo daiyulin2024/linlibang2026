@@ -16,6 +16,8 @@ Use Cloudflare Pages Git integration as the long-term deployment path.
 - Build command: `npm run build`
 - Build output directory: `dist`
 
+Status checked on 2026-06-25 with Wrangler: the existing `linlibang2026` Pages project currently reports `Git Provider: No`, which means it is still using Direct Upload deployments. To finish long-term automatic deployment, connect the Pages project to the GitHub repository in the Cloudflare dashboard.
+
 Cloudflare Pages should have these environment variables configured in the dashboard:
 
 ```env
@@ -29,6 +31,19 @@ Do not commit `.env.local` or real Supabase credentials.
 ## Why Git Integration
 
 Cloudflare Pages can deploy by Git integration or by Direct Upload. For long-term work, Git integration is preferred because every push to the configured branch can trigger a new build and deployment, while pull requests and branches can get preview deployments. Wrangler Direct Upload remains useful only as a manual fallback.
+
+## Cloudflare Dashboard Checklist
+
+In Cloudflare Pages, open project `linlibang2026` and connect it to GitHub:
+
+- Repository: `daiyulin2024/linlibang2026`
+- Production branch: `main`
+- Root directory: blank or `/`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Environment variables: configure `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, and `VITE_ADMIN_PASSWORD`
+
+After saving the Git integration, push a small commit to `main` or trigger a retry deployment from the Cloudflare dashboard. The deployment source should change from Direct Upload to Git.
 
 ## Manual Fallback Deployment
 
