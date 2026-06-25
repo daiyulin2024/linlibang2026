@@ -87,4 +87,4 @@ The old project placed the Vite app under:
 phases/phase_7_react_web
 ```
 
-This cleaned `ddl` project places the Vite app at the repository root, so Cloudflare Pages root directory should be blank or `/`, not the old phase path.
+This cleaned `linlibang202606` project places the Vite app at the repository root, so Cloudflare Pages root directory should be blank or `/`, not the old phase path.
